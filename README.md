@@ -1,1 +1,2 @@
-# Elixir_Bari_2026
+# Assembly, QC, Taxonomic classification and Functional annotation of MAGs
+
