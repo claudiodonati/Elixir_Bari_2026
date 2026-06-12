@@ -78,6 +78,43 @@ mkdir fastq
 cp /data/course_backup/.../*.fastq fastq
 ```
 
+then run the workflow (do not do it, it would take several hours)
+
+```
+nextflow run metashot/mag-illumina \
+ -r 2.2.0 \ ## version of the workflow
+--assembler "megahit" \ ## use megahit as assembler
+--reads '../fastq/*_R{1,2}.fastq.gz' \
+--outdir "results" \ ## put the results here
+-c nf-machina-low.conf \ ## use this configuration file
+-with-report report.html \ ##produce an html report
+-resume ##resume in case you start from a previous run
+```
+
+Running the workflow will produce two directories, namely "work" where all teh intermediate syeps are stored, and "results", where you will find the results of the run. "works" is needed only if you want to restart/rerun your workflow with different parameters, you can delete it if you are done.
+Now lets look at the results. 
+
+```
+ls results/
+bins  clean_reads_stats  metabat2  qc  raw_reads_stats  scaffolds  stats_scaffolds.tsv  unbinned
+```
+
+these directories contain the main output of the workflow. In particular:
+
+scaffolds: scaffolds for each input sample;
+bins: genome bins;
+unbinned: unbinned contigs;
+stats_scaffolds.tsv: scaffold statistics
+
+```
+more results/stats_scaffolds.tsv
+n_scaffolds	n_contigs	scaf_bp	contig_bp	gap_pct	scaf_N50	scaf_L50	ctg_N50	ctg_L50	scaf_N90	scaf_L90	ctg_N90	ctg_L90	scaf_max	ctg_max	scaf_n_gt50K	scaf_pct_gt50K	gc_avg	gc_std	filename
+723443	723443	583269202	583269202	0.000	99194	960	99194	960	538340	353	538340	353	1283613	1283613	313	6.349	0.54500	0.11001	/nfs2/donatic/projects/Scuola_Bari/mag/work/17/b05c9d5e911502be97ed6e220a5971/Sample1.fa
+284336	284336	399692155	399692155	0.000	14250	3452	14250	3452	175329	460	175329	460	1132101	1132101	681	19.894	0.59955	0.10263	/nfs2/donatic/projects/Scuola_Bari/mag/work/8a/cec91c719e0665e665564d6a8ca5aa/Sample2.fa
+998958	998958	776929726	776929726	0.000	151465	949	151465	949	736223	347	736223	347	608239	608239	230	2.741	0.47109	0.11882	/nfs2/donatic/projects/Scuola_Bari/mag/work/4e/70206b5a198e8937253aef5b5c5dd1/Sample3.fa
+```
+
+
 ## Second step: Bin quality filtering and dereplication
 
 
