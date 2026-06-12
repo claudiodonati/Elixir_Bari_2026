@@ -1,6 +1,5 @@
 # Assembly, QC, Taxonomic classification and Functional annotation of MAGs
 
-- [Assembly, QC, Taxonomic classification and Functional annotation of MAGs](#assembly-qc-taxonomic-classification-and-functional-annotation-of-mags)
   - [First step: Assembly and Binning](#first-step-assembly-and-binning)
 
 
