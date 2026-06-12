@@ -101,9 +101,9 @@ bins  clean_reads_stats  metabat2  qc  raw_reads_stats  scaffolds  stats_scaffol
 these directories contain the main output of the workflow. In particular:
 
 scaffolds: scaffolds for each input sample;
-bins: genome bins;
-unbinned: unbinned contigs;
-stats_scaffolds.tsv: scaffold statistics
+bins: genome bins;  
+unbinned: unbinned contigs;  
+stats_scaffolds.tsv: scaffold statistics. 
 
 ```
 more results/stats_scaffolds.tsv
